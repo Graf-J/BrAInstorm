@@ -1,0 +1,23 @@
+.word-send-button {
+    height: 56px;
+}
+
+.brainstorm-tab-wrapper {
+    height: 80vh;
+}
+
+.word-input-form {
+    position: absolute;
+    bottom: 0;
+}
+
+.brainstorm-error-message {
+    padding-left: 20px; 
+    padding-bottom: 5px;
+    margin-top: -10px; 
+    color: red;
+}
+
+.brainstorm-error-message:hover {
+    cursor: pointer;
+}

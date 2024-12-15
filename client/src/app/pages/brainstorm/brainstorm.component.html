@@ -1,0 +1,44 @@
+<div [ngClass]="{ 'brainstorm-wrapper-auth': isUserAuthenticated, 'brainstorm-wrapper': !isUserAuthenticated }" class="brainstorm-wrapper">
+    <div class="brainstorm-content-wrapper h-100">
+        <div *ngIf="isUserAuthenticated" class="history-wrapper mx-2 p-1">
+            <div class="container-fluid my-3">
+                <button mat-raised-button (click)="openCreateDialog()" color="primary" class="w-100">Create Brainstorm</button>
+            </div>
+            <div *ngIf="isHistoryLoading" class="d-flex justify-content-center p-5">
+                <mat-spinner></mat-spinner>
+            </div>
+            <div *ngIf="!isHistoryLoading">        
+                <app-history-element 
+                *ngFor="let brainstorm of historyBrainstorms"
+                    [brainstorm]="brainstorm"
+                    (brainstormClickEvent)="onHistoryElementClick($event)"
+                    (brainstormDeleteEvent)="openDeleteDialog($event)">
+                </app-history-element>
+            </div>
+        </div>
+        <div class="tab-wrapper" [ngStyle]="{ 'width': (isUserAuthenticated) ? '80vw' : '98vw' }">
+            <mat-tab-group class="custom-tab-group" color="primary">
+                <mat-tab label="Brainstorm">
+                    <div *ngIf="isBrainstormLoading" class="d-flex justify-content-center p-5">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <app-brainstorm-tab 
+                        *ngIf="!isBrainstormLoading"
+                        [title]="brainstormTitle" 
+                        [creator]="brainstormCreator" 
+                        [data]="data" 
+                        [isBrainstormIdSet]="isBrainstormIdSet" 
+                        [maxWords]="maxWords"
+                        [errorMessage]="websocketErrorMessage"
+                        (toggleChangeEvent)="onToggleChange($event)"
+                        (newWordEvent)="onNewWord($event)">
+                        (errorMsgClickEvent)="websocketErrorMessage = '';"
+                    </app-brainstorm-tab>
+                </mat-tab>
+                <mat-tab label="Context-AI" [disabled]="!isUserAuthenticated || !isBrainstormIdSet || data.length === 0">
+                    <app-context-ai-tab [data]="data"></app-context-ai-tab>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

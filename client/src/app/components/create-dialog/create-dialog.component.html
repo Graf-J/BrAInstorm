@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Create Brainstorm</h1>
+<div mat-dialog-content class="create-brainstorm-wrapper container-fluid rounded">
+    <form [formGroup]="brainstormForm" class="w-100">
+        <div>
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Title</mat-label>
+                <input formControlName="title" matInput>
+            </mat-form-field>
+        </div>
+        
+        <div>
+            <label>Max. Words:</label>
+            <mat-slider showTickMarks discrete [displayWith]="displayLabel" min="10" max="30" step="1" value="20" class="w-75">
+                <input formControlName="maxWords" matSliderThumb>
+            </mat-slider>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-around">
+  <button mat-button mat-dialog-close color="warn">Cancel</button>
+  <button mat-button mat-dialog-close [disabled]="!brainstormForm.valid" (click)="createBrainstorm()" color="primary">Create</button>
+</div>

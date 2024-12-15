@@ -1,0 +1,13 @@
+<div [ngClass]="{ 'history-element-wrapper': brainstorm.id !== selectedBrainstormId, 'history-element-wrapper-active': brainstorm.id === selectedBrainstormId }">
+    <div class="history-element-title-wrapper" (click)="onClick()">
+        <p style="margin-bottom: -2px; margin-left: 5px">{{ brainstorm.title }}</p>
+    </div>
+    <div>
+        <button (click)="openSnackbar()" [cdkCopyToClipboard]="brainstorm.id" mat-icon-button color="primary" aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>content_copy</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete()" color="warn" aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</div>

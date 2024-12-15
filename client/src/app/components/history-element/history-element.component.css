@@ -1,0 +1,39 @@
+.history-element-wrapper {
+    font-size: large;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: rgb(212, 212, 212);
+    display: flex;
+    justify-content: space-between;
+}
+
+.history-element-wrapper:hover {
+    background: rgb(191,0,183);
+    background: linear-gradient(90deg, rgba(191,0,183,1) 0%, rgba(77,34,185,1) 50%, rgba(0,212,255,1) 100%);
+    cursor: pointer;
+}
+
+.history-element-wrapper-active {
+    font-size: large;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background: rgb(191,0,183);
+    color: rgb(212, 212, 212);
+    background: linear-gradient(90deg, rgba(191,0,183,1) 0%, rgba(77,34,185,1) 50%, rgba(0,212,255,1) 100%);
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.history-element-title-wrapper {
+    display: flex;
+    align-items: center;
+    max-width: 60%;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,15 @@
+.context-text-wrapper {
+    background: rgb(233, 233, 233);
+    max-height: 67vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.context-text-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.context-submit-button {
+    height: 57px;
+}

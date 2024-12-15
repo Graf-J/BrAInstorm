@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int       @id @default(autoincrement())
+  userName      String    @unique
+  passwordHash  String
+  brainstorms   Brainstorm[]
+  createdAt     DateTime  @default(now())
+}
+
+model Brainstorm {
+  id            String    @id @default(uuid())
+  title         String
+  maxWords      Int
+  userId        Int
+  author        User      @relation(fields: [userId], references: [id])
+  words         Word[]
+  createdAt     DateTime  @default(now())
+}
+
+model Word {
+  id           Int         @id @default(autoincrement())
+  value        String
+  occurrence   Int         @default(1)
+  color        String
+  brainstormId String      
+  brainstorm   Brainstorm  @relation(fields: [brainstormId], references: [id])
+}

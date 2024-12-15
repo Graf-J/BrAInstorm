@@ -1,0 +1,20 @@
+<div class="brainstorm-tab-wrapper">
+    <div *ngIf="creator !== undefined" class="d-flex justify-content-between">
+        <h1 style="color: rgb(240, 240, 240); padding-top: 10px; padding-left: 10px;">
+            <u>{{ creator }}'s {{ title }}:</u>
+        </h1>
+        <div class="d-flex justify-content-around align-items-center mx-3">
+            <h2 class="m-2" style="color: rgb(240, 240, 240);">Colour-AI:</h2>
+            <mat-slide-toggle [(ngModel)]="isToggleActive" (change)="onToggleChange()"></mat-slide-toggle>
+        </div>
+    </div>
+    
+    <app-word-cloud [data]="data"></app-word-cloud>
+    <form class="container-fluid row space-between center word-input-form" [formGroup]="wordForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="col-9 h-125">
+            <input matInput formControlName="word" placeholder="Word">
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="!isBrainstormIdSet" class="col-3 word-send-button">Send</button>
+        <span class="brainstorm-error-message" (click)="onErrorMessageClick()">{{ errorMessage }}</span>
+    </form>
+</div>

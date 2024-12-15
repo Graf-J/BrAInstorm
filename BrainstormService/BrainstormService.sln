@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainstormService", "BrainstormService.csproj", "{1AC9597A-04B7-4832-B0F4-8696655D918D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AC9597A-04B7-4832-B0F4-8696655D918D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AC9597A-04B7-4832-B0F4-8696655D918D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AC9597A-04B7-4832-B0F4-8696655D918D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AC9597A-04B7-4832-B0F4-8696655D918D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E8CBCD4-636C-4AE3-BE44-58136AB4A159}
+	EndGlobalSection
+EndGlobal

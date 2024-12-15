@@ -1,0 +1,63 @@
+version: '3.4'
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: foo
+      POSTGRES_PASSWORD: bar
+      POSTGRES_DB: brainstorm
+    volumes:
+      - /var/lib/postgresql/data
+
+  auth_service:
+    build: ./AuthService
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - 3000:3000
+    environment:
+      DATABASE_URL: postgresql://foo:bar@postgres:5432/brainstorm
+      WEBSITE_URL: http://172.104.140.98
+
+  brainstorm_service:
+    build: ./BrainstormService
+    restart: always
+    depends_on: 
+      - auth_service
+    ports:
+      - 81:80
+    environment:      
+      DATABASE_URL: Host=postgres:5432;Database=brainstorm;Username=foo;Password=bar
+
+  ai_service:
+    build: ./AIService
+    restart: always
+    depends_on:
+      - auth_service
+    ports:
+      - 82:8000
+    environment:
+      WEBSITE_URL: http://172.104.140.98
+      AUTH_SERVER_URL: http://auth_service:3000
+      OPENAI_KEY: sk-foo
+
+  website:
+    build: ./client
+    restart: always
+    depends_on:
+      - ai_service
+      - brainstorm_service
+    ports:
+      - 80:80
+
+  portainer:
+    image: portainer/portainer-ce
+    ports:
+      - 9000:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /data
+    restart: always
+

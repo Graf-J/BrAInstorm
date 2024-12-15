@@ -1,0 +1,20 @@
+nav {    
+    background: rgb(27, 27, 27);
+    border-bottom: 1px solid rgb(212, 212, 212);
+    position: fixed;
+    z-index: 999;
+}
+
+img {
+    height: 50px;
+    margin: 5px;
+}
+
+span {
+    font-size: xx-large;
+    color: rgb(100, 100, 100)
+}
+
+.logo-wrapper:hover {
+    cursor: pointer;
+}
